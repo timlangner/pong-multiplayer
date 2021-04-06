@@ -48,7 +48,11 @@ const App = () => {
   }, [context]);
 
   useEffect(() => {
-    if (context && mouseYPosition <= 400 && mouseYPosition >= 0) {
+    if (context) {
+      // To prevent paddles from moving outside the canvas
+      if (mouseYPosition <= 0) setMouseYPosition(0);
+      if (mouseYPosition >= 400) setMouseYPosition(400);
+      
       // Clear paddle
       context.clearRect(paddle.x, paddle.y, 10, 100);
 
