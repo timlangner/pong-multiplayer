@@ -6,7 +6,22 @@ const App = () => {
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null)
 
   React.useEffect(() => {
+    if (canvasRef.current) {
+      const renderCtx = canvasRef.current.getContext('2d');
 
+      if (renderCtx) {
+        setContext(renderCtx);
+      }
+    }
+
+    // Draw paddles
+    if (context) {
+      // player 1
+      context.fillRect(5, 250, 10, 75);
+
+      // player 2
+      context.fillRect(985, 250, 10, 75);
+    }
   }, [context]);
 
   return (
