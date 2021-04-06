@@ -5,7 +5,7 @@ const App = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [context, setContext] = useState<CanvasRenderingContext2D | null>(null)
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (canvasRef.current) {
       const renderCtx = canvasRef.current.getContext('2d');
 
