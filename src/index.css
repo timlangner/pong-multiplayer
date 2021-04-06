@@ -1,0 +1,13 @@
+
+html, body {
+  height: 100% !important;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+#root {
+  height: 100%;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
