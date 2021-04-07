@@ -1,0 +1,23 @@
+{
+  "name": "pong-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "author": "Tim Langner",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "https": "^1.0.0",
+    "sequelize": "^5.21.7",
+    "ws": "^7.4.4"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
