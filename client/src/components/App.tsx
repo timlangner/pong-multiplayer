@@ -1,28 +1,34 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import Canvas from "./canvas/Canvas";
 import './app.scss';
 
+type PaddlePosition = {
+  x: number;
+  y: number;
+}
+
 const App = () => {
-  const ws = useRef<WebSocket | null>(null);
+  const [enemyPosition, setEnemyPosition] = useState<PaddlePosition>({ x: 985, y: 200 })
+  const [ws] = useState<WebSocket>(() => new WebSocket('ws://localhost:8999'));
 
   useEffect(() => {
-    ws.current = new WebSocket('ws://localhost:8999');
 
-    ws.current.onopen = () => {
+    ws.onopen = () => {
       console.log('connected');
     }
 
-    ws.current.onmessage = (evt) => {
+    ws.onmessage = (evt: any) => {
       // Get coordinates for second paddle back
+      console.log(evt);
     }
 
-    ws.current.onclose = () => {
+    ws.onclose = () => {
       console.log('disconnected');
     }
   });
 
   return (
-    <Canvas />
+    <Canvas ws={ws} />
   );
 }
 

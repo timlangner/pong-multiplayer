@@ -1,4 +1,5 @@
 import React, {useEffect, useState, useRef} from 'react';
+import PropTypes from "prop-types";
 import './canvas.scss';
 
 type PaddlePosition = {
@@ -6,7 +7,11 @@ type PaddlePosition = {
     y: number;
 }
 
-const Canvas = () => {
+interface CanvasProps {
+    ws: WebSocket
+}
+
+const Canvas = ({ws}: CanvasProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [context, setContext] = useState<CanvasRenderingContext2D | null>(null)
     const [mouseYPosition, setMouseYPosition] = useState<number>(0);
@@ -59,11 +64,17 @@ const Canvas = () => {
             // Clear path
             context.beginPath();
 
+            // New updated paddle position
+            const newPosition: PaddlePosition = {x: 5, y: mouseYPosition - 50}
+
+            // Send updated position to server
+            // ws.send(JSON.stringify(newPosition));
+
             // Draw new updated paddle
             context.fillRect(5, mouseYPosition - 50, 10, 100);
 
-            // Set new paddle position
-            setPaddle({x: 5, y: mouseYPosition - 50})
+            // Save new paddle position
+            setPaddle(newPosition)
         }
     }, [context, mouseYPosition, paddle.x, paddle.y]);
 
@@ -80,3 +91,7 @@ const Canvas = () => {
 }
 
 export default Canvas;
+
+Canvas.propTypes = {
+    ws: PropTypes.any,
+}
