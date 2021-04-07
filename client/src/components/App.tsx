@@ -50,9 +50,9 @@ const App = () => {
   useEffect(() => {
     if (context) {
       // To prevent paddles from moving outside the canvas
-      if (mouseYPosition <= 0) setMouseYPosition(0);
-      if (mouseYPosition >= 400) setMouseYPosition(400);
-      
+      if (mouseYPosition <= 50) setMouseYPosition(50);
+      if (mouseYPosition >= 450) setMouseYPosition(450);
+
       // Clear paddle
       context.clearRect(paddle.x, paddle.y, 10, 100);
 
@@ -60,12 +60,12 @@ const App = () => {
       context.beginPath();
 
       // Draw new updated paddle
-      context.fillRect(5, mouseYPosition, 10, 100);
+      context.fillRect(5, mouseYPosition - 50, 10, 100);
 
       // Set new paddle position
-      setPaddle({x: 5, y: mouseYPosition})
+      setPaddle({x: 5, y: mouseYPosition - 50})
     }
-  }, [mouseYPosition]);
+  }, [context, mouseYPosition, paddle.x, paddle.y]);
 
   return (
     <div className="app" onMouseMove={(event) => handleMouseMove(event)}>
