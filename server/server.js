@@ -1,6 +1,6 @@
-const express = require('express');
+const express = require("express");
 const http = require("http");
-const WebSocket = require('ws');
+const WebSocket = require("ws");
 
 const app = express();
 
@@ -10,34 +10,28 @@ const server = http.createServer(app);
 //initialize the WebSocket server instance
 const wss = new WebSocket.Server({ server });
 
-wss.on('connection', (ws) => {
+// active clients
+let activeConnections = new Set();
 
-    //send immediatly a feedback to the incoming connection
-    ws.send('connected');
+// client connected to websocket
+wss.on("connection", (ws) => {
+    // Add current connection to set with all connections
+    activeConnections.add(ws);
 
-    ws.isAlive = true;
+    // Send confirmation message
+    ws.send(JSON.stringify({ type: "CONNECTED" }));
 
-    ws.on('pong', () => {
-        ws.isAlive = true;
-    });
-
-    //connection is up, let's add a simple simple event
-    ws.on('message', (message) => {
-
-        //log the received message and send it back to the client
-        console.log('received: %s', message);
-        ws.send(`Hello, you sent -> ${message}`);
-    });
-
-    setInterval(() => {
-        wss.clients.forEach((ws) => {
-
-            if (!ws.isAlive) return ws.terminate();
-
-            ws.isAlive = false;
-            ws.ping(null, false, true);
+    // Check for incoming messages
+    ws.on("message", (message) => {
+        activeConnections.forEach((activeConnection) => {
+            // Check if connection comes from other client
+            if (activeConnection !== ws) {
+                activeConnection.send(message);
+            }
         });
-    }, 10000);
+
+        console.log("received: %s", message);
+    });
 });
 
 //start our server
