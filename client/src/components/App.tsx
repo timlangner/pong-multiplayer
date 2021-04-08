@@ -1,35 +1,39 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import Canvas from "./canvas/Canvas";
-import './app.scss';
-
-type PaddlePosition = {
-  x: number;
-  y: number;
-}
+import "./app.scss";
 
 const App = () => {
-  const [enemyPosition, setEnemyPosition] = useState<PaddlePosition>({ x: 985, y: 200 })
-  const [ws] = useState<WebSocket>(() => new WebSocket('ws://localhost:8999'));
+    const [enemyPosition, setEnemyPosition] = useState<number>(200);
+    const [ws] = useState<WebSocket>(
+        () => new WebSocket("ws://localhost:8999")
+    );
 
-  useEffect(() => {
+    useEffect(() => {
+        ws.onopen = () => {
+            console.log("connected");
+        };
 
-    ws.onopen = () => {
-      console.log('connected');
-    }
+        ws.onmessage = (messageEvent: MessageEvent<string>) => {
+            // Get coordinates for second paddle back
+            let message = JSON.parse(messageEvent.data);
 
-    ws.onmessage = (evt: any) => {
-      // Get coordinates for second paddle back
-      console.log(evt);
-    }
+            // Check if message event is for paddle position update
+            switch (message.type) {
+                case "POSITION_UPDATE":
+                    let yPosition = message.data.yPosition;
+                    setEnemyPosition(yPosition);
+                    break;
+                default:
+                    break;
+            }
+        };
 
-    ws.onclose = () => {
-      console.log('disconnected');
-    }
-  });
+        ws.onclose = () => {
+            console.log("disconnected");
+        };
+    });
 
-  return (
-    <Canvas ws={ws} />
-  );
-}
+    return <Canvas ws={ws} enemyPosition={enemyPosition} />;
+};
 
 export default App;
