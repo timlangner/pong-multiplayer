@@ -1,10 +1,10 @@
 .canvas-wrapper {
-  height: 100%;
-  width: 100vw;
-  display: grid;
-  place-items: center;
+    height: 100%;
+    width: 100vw;
+    display: grid;
+    place-items: center;
 
-  .canvas {
-    border: 10px solid black;
-  }
+    .canvas {
+        border: 10px solid black;
+    }
 }
