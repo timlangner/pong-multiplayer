@@ -1,18 +1,25 @@
 import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import "./canvas.scss";
+import { Ball } from "../../../../server/src/Ball";
 
 type WebsocketMessage<T> = {
     type: string;
-    data: T;
+    payload: T;
+};
+
+type BallPosition = {
+    x: number;
+    y: number;
 };
 
 interface CanvasProps {
     ws: WebSocket;
     enemyPosition: number;
+    ballPosition: BallPosition;
 }
 
-const Canvas = ({ ws, enemyPosition }: CanvasProps) => {
+const Canvas = ({ ws, enemyPosition, ballPosition }: CanvasProps) => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [context, setContext] = useState<CanvasRenderingContext2D | null>(
         null
@@ -21,7 +28,6 @@ const Canvas = ({ ws, enemyPosition }: CanvasProps) => {
     const [paddleYPosition, setPaddleYPosition] = useState<number>(0);
 
     useEffect(() => {
-        // Draw enemy paddle
         if (context) {
             // Clear paddle
             context.clearRect(985, 0, 10, 500);
@@ -33,6 +39,19 @@ const Canvas = ({ ws, enemyPosition }: CanvasProps) => {
             context.fillRect(985, enemyPosition, 10, 100);
         }
     }, [context, enemyPosition]);
+
+    useEffect(() => {
+        if (context) {
+            // Clear field
+            context.clearRect(15, 0, 15, 500);
+
+            // Clear path
+            context.beginPath();
+
+            // Draw ball
+            context.fillRect(ballPosition.x, ballPosition.y, 15, 15);
+        }
+    }, [context, ballPosition]);
 
     useEffect(() => {
         // Check if cavas reference exists
@@ -60,7 +79,7 @@ const Canvas = ({ ws, enemyPosition }: CanvasProps) => {
             context.fillRect(985, 200, 10, 100);
 
             // ball
-            context.fillRect(485, 235, 15, 15);
+            // context.fillRect(485, 235, 15, 15);
         }
     }, [context]);
 
@@ -81,7 +100,7 @@ const Canvas = ({ ws, enemyPosition }: CanvasProps) => {
             // New updated paddle position
             const newPosition: WebsocketMessage<{ y: number }> = {
                 type: "POSITION_UPDATE",
-                data: {
+                payload: {
                     y: mouseYPosition - 50,
                 },
             };
