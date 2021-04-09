@@ -1,22 +1,27 @@
 import { Ball } from "./Ball.js";
+import { Player } from "./Player.js";
 
 export class Game {
-    static TICK_RATE = 16;
-    static WIDTH = 800;
-    static HEIGHT = 600;
+    private static TICK_RATE = 16;
+    public static WIDTH = 800;
+    public static HEIGHT = 600;
+
+    ball: Ball;
+    players = new Set<Player>();
+
+    tickInterval?: NodeJS.Timeout;
 
     constructor() {
         this.ball = new Ball(this, Game.WIDTH / 2, Game.HEIGHT / 2);
-        this.players = new Set();
     }
 
-    startGame() {
+    private startGame() {
         this.tickInterval = setInterval(() => {
             this.tick();
         }, Game.TICK_RATE);
     }
 
-    addPlayer(player) {
+    public addPlayer(player: Player) {
         this.players.add(player);
 
         if (!this.tickInterval) {
@@ -24,11 +29,11 @@ export class Game {
         }
     }
 
-    tick() {
+    private tick() {
         this.ball.move();
     }
 
-    broadcast(message, exceptionList = []) {
+    public broadcast(message: string, exceptionList = [] as Array<Player>) {
         this.players.forEach((player) => {
             if (!exceptionList.includes(player)) {
                 player.sendMessage(message);

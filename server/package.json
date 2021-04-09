@@ -1,25 +1,25 @@
 {
-  "name": "pong-server",
-  "version": "1.0.0",
-  "description": "",
-  "type": "module",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server",
-    "dev": "nodemon server"
-  },
-  "author": "Tim Langner",
-  "license": "ISC",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "https": "^1.0.0",
-    "sequelize": "^5.21.7",
-    "ws": "^7.4.4"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.3",
-    "prettier": "^2.2.1"
-  }
+    "author": "Tim Langner",
+    "dependencies": {
+        "ws": "^7.4.4"
+    },
+    "description": "",
+    "devDependencies": {
+        "@types/ws": "^7.4.1",
+        "esbuild": "^0.11.6",
+        "nodemon": "^2.0.3",
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.2.1",
+        "typescript": "^4.2.4"
+    },
+    "license": "ISC",
+    "main": "server.js",
+    "name": "pong-server",
+    "scripts": {
+        "dev": "run-p watch run-and-watch",
+        "run-and-watch": "nodemon",
+        "start": "node server",
+        "watch": "esbuild server.ts --outfile=dist/server.js --bundle --watch --platform=node --target=node14 --log-level=error"
+    },
+    "version": "1.0.0"
 }

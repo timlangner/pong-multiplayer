@@ -7,11 +7,11 @@ export class Ball {
     yDelta = 2;
     xDelta = 3;
 
-    constructor(game, x, y) {
-        this.game = game;
-        this.x = x;
-        this.y = y;
-    }
+    constructor(
+        public readonly game: Game,
+        public x: number,
+        public y: number
+    ) {}
 
     move() {
         this.x += this.xDelta;

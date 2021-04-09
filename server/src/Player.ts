@@ -1,12 +1,15 @@
+import WebSocket from "ws";
+import { Game } from "./Game";
+
 export class Player {
     y = 0;
 
-    constructor(game, connection) {
-        this.game = game;
-        this.connection = connection;
-
+    constructor(
+        private readonly game: Game,
+        private readonly connection: WebSocket
+    ) {
         connection.on("message", (message) => {
-            const decodedMessage = JSON.parse(message);
+            const decodedMessage = JSON.parse(message.toString());
 
             switch (decodedMessage.type) {
                 case "POSITION_UPDATE":
@@ -16,7 +19,7 @@ export class Player {
         });
     }
 
-    updateYPosition(newYPosition) {
+    public updateYPosition(newYPosition: number) {
         this.y = newYPosition;
 
         const message = JSON.stringify({
@@ -27,7 +30,7 @@ export class Player {
         this.game.broadcast(message, [this]);
     }
 
-    sendMessage(message) {
+    public sendMessage(message: string) {
         this.connection.send(message);
     }
 }

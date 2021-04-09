@@ -1,0 +1,5 @@
+{
+    "$schema": "https://raw.githubusercontent.com/SchemaStore/schemastore/master/src/schemas/json/nodemon.json",
+    "exec": "node dist/server.js",
+    "watch": ["dist/"]
+}
