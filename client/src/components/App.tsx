@@ -20,7 +20,7 @@ const App = () => {
             // Check if message event is for paddle position update
             switch (message.type) {
                 case "POSITION_UPDATE":
-                    let yPosition = message.data.yPosition;
+                    let yPosition = message.data.y;
                     setEnemyPosition(yPosition);
                     break;
                 default:

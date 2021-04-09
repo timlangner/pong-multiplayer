@@ -1,6 +1,8 @@
-const express = require("express");
-const http = require("http");
-const WebSocket = require("ws");
+import WebSocket from "ws";
+import { Game } from "./src/Game.js";
+import { Player } from "./src/Player.js";
+import express from "express";
+import http from "http";
 
 const app = express();
 
@@ -8,30 +10,15 @@ const app = express();
 const server = http.createServer(app);
 
 //initialize the WebSocket server instance
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ port: 8080 });
 
-// active clients
-let activeConnections = new Set();
+const game = new Game();
 
 // client connected to websocket
-wss.on("connection", (ws) => {
-    // Add current connection to set with all connections
-    activeConnections.add(ws);
+wss.on("connection", (connection) => {
+    const newPlayer = new Player(game, connection);
 
-    // Send confirmation message
-    ws.send(JSON.stringify({ type: "CONNECTED" }));
-
-    // Check for incoming messages
-    ws.on("message", (message) => {
-        activeConnections.forEach((activeConnection) => {
-            // Check if connection comes from other client
-            if (activeConnection !== ws) {
-                activeConnection.send(message);
-            }
-        });
-
-        console.log("received: %s", message);
-    });
+    game.addPlayer(newPlayer);
 });
 
 //start our server

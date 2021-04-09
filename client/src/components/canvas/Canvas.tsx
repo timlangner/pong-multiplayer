@@ -79,10 +79,10 @@ const Canvas = ({ ws, enemyPosition }: CanvasProps) => {
             context.beginPath();
 
             // New updated paddle position
-            const newPosition: WebsocketMessage<{ yPosition: number }> = {
+            const newPosition: WebsocketMessage<{ y: number }> = {
                 type: "POSITION_UPDATE",
                 data: {
-                    yPosition: mouseYPosition - 50,
+                    y: mouseYPosition - 50,
                 },
             };
 
