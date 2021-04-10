@@ -16,10 +16,6 @@ const App = () => {
     useEffect(() => {
         ws.onopen = () => {
             console.log("connected");
-
-            setInterval(() => {
-                ws.send("ping");
-            }, 10000);
         };
 
         ws.onmessage = (messageEvent: MessageEvent<string>) => {
