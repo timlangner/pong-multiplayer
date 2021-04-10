@@ -1,15 +1,11 @@
 import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
+import type { BallPosition } from "../../types/BallPosition";
 import "./canvas.scss";
 
 type WebsocketMessage<T> = {
     type: string;
     payload: T;
-};
-
-type BallPosition = {
-    x: number;
-    y: number;
 };
 
 interface CanvasProps {
@@ -76,9 +72,6 @@ const Canvas = ({ ws, enemyPosition, ballPosition }: CanvasProps) => {
 
             // player 2
             context.fillRect(985, 200, 10, 100);
-
-            // ball
-            // context.fillRect(485, 235, 15, 15);
         }
     }, [context]);
 

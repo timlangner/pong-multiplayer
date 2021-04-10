@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Canvas from "./canvas/Canvas";
+import type { BallPosition } from "../types/BallPosition";
 import "./app.scss";
-
-type BallPosition = {
-    x: number;
-    y: number;
-};
 
 const App = () => {
     const [enemyPosition, setEnemyPosition] = useState<number>(200);
@@ -20,6 +16,10 @@ const App = () => {
     useEffect(() => {
         ws.onopen = () => {
             console.log("connected");
+
+            setInterval(() => {
+                ws.send("ping");
+            }, 10000);
         };
 
         ws.onmessage = (messageEvent: MessageEvent<string>) => {
