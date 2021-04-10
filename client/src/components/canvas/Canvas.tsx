@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import PropTypes from "prop-types";
 import "./canvas.scss";
-import { Ball } from "../../../../server/src/Ball";
 
 type WebsocketMessage<T> = {
     type: string;
@@ -43,7 +42,7 @@ const Canvas = ({ ws, enemyPosition, ballPosition }: CanvasProps) => {
     useEffect(() => {
         if (context) {
             // Clear field
-            context.clearRect(15, 0, 15, 500);
+            context.clearRect(15, 0, 960, 500);
 
             // Clear path
             context.beginPath();

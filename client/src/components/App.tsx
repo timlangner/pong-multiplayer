@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Canvas from "./canvas/Canvas";
 import "./app.scss";
-import { Ball } from "../../../server/src/Ball";
 
 type BallPosition = {
     x: number;
@@ -27,14 +26,14 @@ const App = () => {
             // Get coordinates for second paddle back
             let message = JSON.parse(messageEvent.data);
 
-            // Check if message event is for paddle position update
+            // Check incoming websocket type
             switch (message.type) {
-                case "POSITION_UPDATE":
-                    let yPosition = message.data.y;
+                case "ENEMY_POSITION_UPDATE":
+                    let yPosition = message.payload.y;
                     setEnemyPosition(yPosition);
                     break;
                 case "BALL_POSITION_UPDATE":
-                    setBallPosition(message.data);
+                    setBallPosition(message.payload);
                     break;
                 default:
                     break;
