@@ -17,11 +17,11 @@ export class Ball {
         this.x += this.xDelta;
         this.y += this.yDelta;
 
-        if (this.y < 0 || this.y > Game.HEIGHT) {
+        if (this.y < 0 || this.y > Game.HEIGHT - 15) {
             this.yDelta = -this.yDelta;
         }
 
-        if (this.x < 0 || this.x > Game.WIDTH) {
+        if (this.x < 0 || this.x > Game.WIDTH - 15) {
             this.xDelta = -this.xDelta;
         }
 
