@@ -3,8 +3,8 @@ import { Player } from "./Player.js";
 
 export class Game {
     private static TICK_RATE = 16;
-    public static WIDTH = 800;
-    public static HEIGHT = 600;
+    public static WIDTH = 1000;
+    public static HEIGHT = 500;
 
     ball: Ball;
     players = new Set<Player>();
