@@ -1,8 +1,8 @@
 import { Game } from "./Game";
 
 export class Ball {
-    static HEIGHT = 15;
     static WIDTH = 15;
+    static HEIGHT = 15;
 
     private xPosition = Game.HEIGHT / 2;
     private yPosition = Game.WIDTH / 2;

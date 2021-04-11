@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
-import "./canvas.scss";
 import { Game } from "../../Game";
+import "./canvas.scss";
 
 const Canvas = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -10,6 +9,7 @@ const Canvas = () => {
         if (canvasRef.current) {
             const game = new Game(canvasRef.current);
 
+            // When unmounting, remove event listeners
             return () => {
                 game.dispose();
             };
@@ -31,7 +31,3 @@ const Canvas = () => {
 };
 
 export default Canvas;
-
-Canvas.propTypes = {
-    ws: PropTypes.any,
-};
