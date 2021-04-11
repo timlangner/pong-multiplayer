@@ -4,7 +4,11 @@
     display: grid;
     place-items: center;
 
-    .canvas {
+    .canvas-border {
         border: 10px solid black;
+    }
+
+    .canvas {
+        display: block;
     }
 }
