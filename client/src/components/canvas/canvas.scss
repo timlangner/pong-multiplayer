@@ -5,10 +5,13 @@
     place-items: center;
 
     .canvas-border {
-        border: 10px solid black;
+        border: 5px solid black;
+        border-radius: 15px;
     }
 
     .canvas {
         display: block;
+        background-color: #E5E7EB;
+        border-radius: 15px;
     }
 }
