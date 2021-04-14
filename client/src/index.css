@@ -1,8 +1,12 @@
+* {
+    font-family: 'Barlow', sans-serif;
+}
+
 html,
 body {
     height: 100% !important;
     margin: 0;
-    font-family: "Arial", sans-serif;
+    font-family: 'Barlow', sans-serif;
 }
 
 #root {
