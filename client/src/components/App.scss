@@ -1,0 +1,27 @@
+.app {
+  height: 100%;
+
+  .interface-container {
+    height: 100%;
+    display: grid;
+
+    .interface {
+      place-items: center;
+    }
+  }
+
+  .panels {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .left-panel {
+    margin-right: 15px;
+  }
+
+  .right-panel {
+    margin-left: 15px;
+  }
+}
