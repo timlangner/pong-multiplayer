@@ -2,6 +2,7 @@ import React from "react";
 import Canvas from "./canvas/Canvas";
 import "./app.scss";
 import Main from "./user-interface/main/Main";
+import Others from "./user-interface/others/Others";
 
 const App = () => {
     return (
@@ -10,6 +11,9 @@ const App = () => {
                 <div className="interface">
                     <div className="panels">
                         <Main />
+                        <div className="right-panel">
+                            <Others />
+                        </div>
                     </div>
                 </div>
             </div>
