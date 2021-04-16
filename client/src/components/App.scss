@@ -1,5 +1,9 @@
 .app {
   height: 100%;
+  background-size: 200px 150px;
+  background-image:
+          linear-gradient(to right, #f5f4f4 2px, transparent 2px),
+          linear-gradient(to bottom, #f5f4f4 2px, transparent 2px);
 
   .interface-container {
     height: 100%;
