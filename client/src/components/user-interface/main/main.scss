@@ -1,0 +1,115 @@
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.main-container {
+  height: 440px;
+  width: 330px;
+  background-color: rgba(229, 231, 235, .5);
+  border-radius: 5px;
+  text-align: center;
+
+  .headline {
+    color: #111827;
+    font-weight: 800;
+    margin-bottom: 20px;
+    margin-top: 15px;
+  }
+
+  .duo-buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5px;
+    width: 91.5%;
+    margin-left: 15px;
+    .create-button {
+      width: 49%;
+      height: 35px;
+      background-color: #F43F5E;
+      color: white;
+      border-radius: 5px;
+      margin-right: 5px;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 0;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        opacity: 0.9;
+        cursor: pointer;
+      }
+    }
+
+    .join-button {
+      width: 49%;
+      height: 35px;
+      background-color: #14B8A6;
+      color: white;
+      border-radius: 5px;
+      margin-right: 5px;
+      border: none;
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 0;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        opacity: 0.9;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .settings-button--wrapper {
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    margin-left: 15px;
+
+    .settings-button {
+      width: 100%;
+      height: 35px;
+      background-color: #6366F1;
+      color: white;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        opacity: 0.9;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .ad-wrapper {
+    margin-top: 20px;
+    p {
+      font-size: 9px;
+      height: 0;
+      color: #D1D5DB;
+      font-weight: bold;
+    }
+    .ad-container {
+      width: 300px;
+      height: 250px;
+      display: flex;
+      justify-content: center;
+      margin-left: 15px;
+      background-color: #E5E7EB;
+      border-radius: 5px;
+    }
+  }
+}
