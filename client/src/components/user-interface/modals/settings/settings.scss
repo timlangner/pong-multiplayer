@@ -1,0 +1,31 @@
+.settings-modal-content {
+  background-color: #E5E7EB !important;
+  color: #6B7280;
+
+  .modal-header {
+    border-bottom: none;
+    background-color: #D1D5DB;
+
+    #contained-modal-title-vcenter {
+      font-weight: 700;
+      color: #4B5563;
+    }
+
+    span {
+      color: #4B5563;
+      font-size: 35px;
+      font-weight: 500;
+    }
+  }
+
+  .modal-body {
+    display: flex;
+    padding: 0;
+    overflow-x: hidden;
+
+    main {
+      margin: 10px;
+      width: 100%;
+    }
+  }
+}

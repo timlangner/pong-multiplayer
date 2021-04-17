@@ -2,7 +2,7 @@
   height: 130px;
   width: 350px;
   border-radius: 5px;
-  margin-bottom: 320px;
+  margin-bottom: 310px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,6 +13,7 @@
     width: 300px;
     height: 75px;
     padding: 15px;
+    box-sizing: content-box;
 
     .login-button {
       height: 35px;

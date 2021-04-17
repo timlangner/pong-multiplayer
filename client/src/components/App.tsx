@@ -1,9 +1,9 @@
 import React from "react";
 import Canvas from "./canvas/Canvas";
-import "./app.scss";
 import Main from "./user-interface/main/Main";
 import Others from "./user-interface/others/Others";
 import Account from "./user-interface/account/Account";
+import "./app.scss";
 
 const App = () => {
     return (
@@ -21,6 +21,7 @@ const App = () => {
                     </div>
                 </div>
             </div>
+            {/*<Canvas />*/}
         </div>
     );
 };
