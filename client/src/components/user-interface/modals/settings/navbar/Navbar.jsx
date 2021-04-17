@@ -10,7 +10,7 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
                         selectedPage === 0
                             ? {
                                   backgroundColor: "#E5E7EB",
-                                  borderLeft: "3px solid #DE7000",
+                                  borderLeft: "3px solid #F43F5E",
                               }
                             : null
                     }
@@ -23,7 +23,7 @@ const Navbar = ({ selectedPage, setSelectedPage }) => {
                         selectedPage === 1
                             ? {
                                   backgroundColor: "#E5E7EB",
-                                  borderLeft: "3px solid #DE7000",
+                                  borderLeft: "3px solid #F43F5E",
                               }
                             : null
                     }
