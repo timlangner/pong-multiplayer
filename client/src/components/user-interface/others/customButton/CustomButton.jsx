@@ -1,16 +1,16 @@
-import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import './customButton.scss';
+import React from "react";
+import "./customButton.scss";
 
 const CustomButton = ({ icon, title }) => {
+    const Icon = icon;
+
     return (
         <div className="button-wrapper">
-            <div className="button-items">
-                <FontAwesomeIcon
-                    icon={icon}
-                    className="button-items--icon"
-                />
-                <p>{title}</p>
+            <div className="button-item">
+                <div>
+                    <Icon className="button-item--icon" />
+                    <p>{title}</p>
+                </div>
             </div>
         </div>
     );

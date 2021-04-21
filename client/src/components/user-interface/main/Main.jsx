@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCog } from "@fortawesome/free-solid-svg-icons";
+import { CogIcon } from "@heroicons/react/solid";
 import Settings from "../modals/settings/Settings";
 import "./main.scss";
 
@@ -26,7 +25,7 @@ const Main = () => {
                         className="settings-button"
                         onClick={() => setShowSettings(true)}
                     >
-                        <FontAwesomeIcon icon={faCog} />
+                        <CogIcon className="cog-icon" />
                     </button>
                 </div>
                 <div className="ad-wrapper">

@@ -82,6 +82,8 @@
       border-radius: 5px;
       border: none;
       font-size: 16px;
+      display: grid;
+      place-items: center;
 
       &:focus {
         outline: none;
@@ -91,6 +93,10 @@
         opacity: 0.9;
         cursor: pointer;
       }
+    }
+
+    .cog-icon {
+      width: 20px;
     }
   }
 
