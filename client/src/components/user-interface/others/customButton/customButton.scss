@@ -13,17 +13,17 @@
     cursor: pointer;
   }
 
-  .button-items {
+  .button-item {
     text-align: center;
 
     &--icon {
-      font-size: 20px;
-      margin-top: 20px;
+      width: 25px;
       color: #6B7280;
     }
 
     p {
-      margin-top: 5px;
+      margin-top: 3px;
+      margin-bottom: 0;
       font-size: 15px;
       font-weight: 600;
     }
